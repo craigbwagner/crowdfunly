@@ -1,12 +1,10 @@
-const express = require('express');
-const router = express.Router();
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 
 const SALT_LENGTH = 12;
 
-router.post('/signup', async (req, res) => {
+async function signUp(req, res) {
   try {
     const userInDatabase = await User.findOne({ username: req.body.username });
     if (userInDatabase) {
@@ -21,9 +19,9 @@ router.post('/signup', async (req, res) => {
   } catch (err) {
     res.status(400).json({ error: err.message })
   }
-});
+};
 
-router.post('/signin', async (req, res) => {
+async function signIn(req, res) {
   try {
     const user = await User.findOne({ username: req.body.username });
     if (user && bcrypt.compareSync(req.body.password, user.password)) {
@@ -35,7 +33,7 @@ router.post('/signin', async (req, res) => {
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
-});
+};
 
 function generateToken(user) {
   const token = jwt.sign(
@@ -45,4 +43,4 @@ function generateToken(user) {
   return token;
 }
 
-module.exports = router;
+module.exports = {signUp, signIn};
