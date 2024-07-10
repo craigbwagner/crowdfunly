@@ -9,8 +9,24 @@ const userSchema = mongoose.Schema({
   password: {
     type: String,
     required: true
+  },
+  email: {
+    type: String,
+    required: true
+  },
+  profilePicture: {
+    type: String
   }
-})
+  campaigns: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Campaign'
+}],
+contributions: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Contribution'
+}]
+});
+
 
 userSchema.set('toJSON', {
   transform: (document, returnedObject) => {
