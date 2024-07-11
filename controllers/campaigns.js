@@ -25,10 +25,10 @@ const index = async (req, res) => {
 
 const show = async (req, res) => {
   try {
-    const campaign = await Campaign.findById(req.params.campaignId).populate(
+    const campaigns = await Campaign.findById(req.params.campaignId).populate(
       "createdBy"
     );
-    res.status(200).json(campaign);
+    res.status(200).json(campaigns);
   } catch (error) {
     res.status(500).json(error);
   }
@@ -36,9 +36,24 @@ const show = async (req, res) => {
 
 const update = async (req, res) => {
   try {
+    const campaign = await Campaign.findById(req.params.campaignId);
+
+    if (!campaign.createdBy.equals(req.user._id)) {
+      return res.status(403).send({ error: "Unauthorized" });
+    }
+
+    const updatedCampaign = await Campaign.findByIdAndUpdate(
+      req.params.campaignId,
+      req.body,
+      { new: true }
+    );
+
+    updatedCampaign._doc.createdBy = req.user;
+
+    res.status(200).json(updatedCampaign);
   } catch (error) {
     res.status(500).json(error);
   }
 };
 
-module.exports = { create, index, show };
+module.exports = { create, index, show, update };
