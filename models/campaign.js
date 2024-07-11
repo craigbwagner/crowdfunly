@@ -35,7 +35,8 @@ const campaignSchema = new mongoose.Schema(
     },
     campaignType: {
       type: String,
-      enum: ["type1", "type2", "type3", "type4"], //create and replace with actual campaign types!
+      enum: ["Charity", "Education", "Creative", "Sports", "Entertainment", "Business", "Events", "Environment"],
+      required: true,
     },
   },
   { timestamps: true }
