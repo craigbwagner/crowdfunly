@@ -12,5 +12,6 @@ router.use(verifyToken);
 router.post("/", campaignsController.create);
 
 router.get("/", campaignsController.index);
+// maybe move this route to public routes? so anyone can see the campaigns?
 
 module.exports = router;
