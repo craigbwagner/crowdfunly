@@ -10,7 +10,8 @@ router.get ('/', async (req, res) => {
         populate('contributions');
         res.status(201).json(compaigns);
     } catch (error) {
-       
+       console.log(error);
+       res.status(500).json(error);
         
     }
 
