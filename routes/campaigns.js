@@ -4,9 +4,6 @@ const router = express.Router();
 
 const campaignsController = require("../controllers/campaigns");
 
-// ========== Public Routes ===========
-
-// ========= Protected Routes =========
 router.use(verifyToken);
 
 router.post("/", campaignsController.create);
