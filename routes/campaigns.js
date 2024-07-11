@@ -19,4 +19,6 @@ router.get("/:campaignId", campaignsController.show);
 
 router.put("/:campaignId", campaignsController.update);
 
+router.delete("/:campaignId", campaignsController.deleteCampaign);
+
 module.exports = router;
