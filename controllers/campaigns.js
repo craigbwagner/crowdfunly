@@ -34,7 +34,7 @@ async function show(req, res) {
   }
 };
 
-const update = async (req, res) => {
+async function update(req, res) {
   try {
     const campaign = await Campaign.findById(req.params.campaignId);
 
@@ -56,7 +56,7 @@ const update = async (req, res) => {
   }
 };
 
-const deleteCampaign = async (req, res) => {
+async function deleteCampaign(req, res) {
   try {
     const campaign = await Campaign.findById(req.params.CampaignId);
 
