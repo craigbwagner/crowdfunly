@@ -11,4 +11,6 @@ router.use(verifyToken);
 
 router.post("/", campaignsController.create);
 
+router.get("/", campaignsController.index);
+
 module.exports = router;
