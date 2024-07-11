@@ -16,7 +16,7 @@ mongoose.connection.on('connected', () => {
 });
 
 app.use(express.json());
-app.use(cors('https://127.0.0.1:5173'))
+app.use(cors());
 
 app.use('/test-jwt', testJWTRouter);
 app.use('/users', usersRouter);
