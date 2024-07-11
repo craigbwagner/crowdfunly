@@ -5,6 +5,7 @@ const router = express.Router();
 router.get ('/', async (req, res) => {
     try {
         const campaigns = await Campaign.find()
+        .populate('createdBy', 'username')
     } catch (error) {
         
     }
