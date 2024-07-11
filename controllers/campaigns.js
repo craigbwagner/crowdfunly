@@ -1,6 +1,6 @@
 const Campaign = require("../models/campaign");
 
-const create = async (req, res) => {
+async function create(req, res) {
   try {
     req.body.createdBy = req.user._id;
     const createdCampaign = await Campaign.create(req.body);
@@ -12,7 +12,7 @@ const create = async (req, res) => {
   }
 };
 
-const index = async (req, res) => {
+async function index(req, res) {
   try {
     const campaigns = await Campaign.find({})
       .populate("createdBy")
@@ -23,7 +23,7 @@ const index = async (req, res) => {
   }
 };
 
-const show = async (req, res) => {
+async function show(req, res) {
   try {
     const campaign = await Campaign.findById(req.params.campaignId).populate(
       "createdBy"
