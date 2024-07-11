@@ -6,6 +6,7 @@ router.get ('/', async (req, res) => {
     try {
         const campaigns = await Campaign.find()
         .populate('createdBy', 'username')
+        populate('contributions')
     } catch (error) {
         
     }
