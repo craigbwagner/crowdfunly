@@ -58,6 +58,16 @@ const update = async (req, res) => {
 
 const deleteCampaign = async (req, res) => {
   try {
+    const campaign = await Campaign.findById(req.params.CampaignId);
+
+    if (!campaign.createdBy.equals(req.user._id)) {
+      return res.status(403).send({ error: "Unauthorized" });
+    }
+
+    const deletedCampaign = await Campaign.findByIdAndDelete(
+      req.params.campaignId
+    );
+    res.status(200).json(deletedCampaign);
   } catch (error) {
     res.status(500).json(error);
   }
