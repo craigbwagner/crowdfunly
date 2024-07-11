@@ -34,4 +34,11 @@ const show = async (req, res) => {
   }
 };
 
+const update = async (req, res) => {
+  try {
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
 module.exports = { create, index, show };
