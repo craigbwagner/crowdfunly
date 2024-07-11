@@ -16,7 +16,7 @@ const userSchema = mongoose.Schema({
   },
   profilePicture: {
     type: String
-  }
+  },
   campaigns: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Campaign'

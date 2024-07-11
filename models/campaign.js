@@ -1,4 +1,4 @@
-onst mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 const campaignSchema = new mongoose.Schema({
     title: {
@@ -26,14 +26,6 @@ const campaignSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Contribution'
     }],
-    createdAt: {
-        type: Date,
-        default: Date.now
-    },
-    updatedAt: {
-        type: Date,
-        default: Date.now
-    },
     endDate: {
         type: Date,
         required: true
@@ -42,6 +34,6 @@ const campaignSchema = new mongoose.Schema({
         type: String,
         enum: ['type1', 'type2', 'type3','type4'] //create and replace with actual campaign types!
     }
-});
+}, {timestamps: true});
 
 module.exports = mongoose.model('Campaign', campaignSchema);

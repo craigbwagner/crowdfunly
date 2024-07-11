@@ -15,10 +15,7 @@ const contributionSchema = new mongoose.Schema({
         ref: 'Campaign',
         required: true
     },
-    createdAt: {
-        type: Date,
-        default: Date.now
-    }
-});
+}, {timestamps: true});
+
 
 module.exports = mongoose.model('Contribution', contributionSchema);
