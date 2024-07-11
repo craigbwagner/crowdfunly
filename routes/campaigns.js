@@ -8,9 +8,14 @@ router.use(verifyToken);
 
 router.post("/", campaignsController.create);
 
-// maybe move these routes to public routes? so anyone can see the campaigns?
+// maybe move this route to public routes? so anyone can see the campaigns?
 router.get("/", campaignsController.index);
 
+// maybe move this route to public routes? so anyone can see the campaigns?
 router.get("/:campaignId", campaignsController.show);
+
+router.put("/:campaignId", campaignsController.update);
+
+router.delete("/:campaignId", campaignsController.deleteCampaign);
 
 module.exports = router;
