@@ -1,46 +1,46 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const campaignSchema = new mongoose.Schema({
+const campaignSchema = new mongoose.Schema(
+  {
     title: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     createdBy: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
     },
     description: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     goalAmount: {
-        type: Number,
-        required: true
+      type: Number,
+      required: true,
     },
     amountRaised: {
-        type: Number,
-        default: 0
+      type: Number,
+      default: 0,
     },
-    contributions: [{
+    contributions: [
+      {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Contribution'
-    }],
+        ref: "Contribution",
+      },
+    ],
     endDate: {
-        type: Date,
-        required: true
+      type: Date,
+      required: true,
     },
     campaignType: {
-        type: String,
-        enum: ["Charity",
-        "Education",
-        "Creative",
-        "Sports",
-        "Entertainment",
-        "Business",
-        "Events",
-        "Environment"] 
-    }
-}, {timestamps: true});
+      type: String,
+      enum: ["Charity", "Education", "Creative", "Sports", "Entertainment", "Business", "Events", "Environment"],
+      required: true,
+    },
+  },
+  { timestamps: true }
+);
 
-module.exports = mongoose.model('Campaign', campaignSchema);
+const Campaign = mongoose.model("Campaign", campaignSchema);
+module.exports = Campaign;
