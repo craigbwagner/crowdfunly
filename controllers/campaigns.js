@@ -23,4 +23,15 @@ const index = async (req, res) => {
   }
 };
 
-module.exports = { create, index };
+const show = async (req, res) => {
+  try {
+    const campaign = await Campaign.findById(req.params.campaignId).populate(
+      "createdBy"
+    );
+    res.status(200).json(campaign);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
+module.exports = { create, index, show };
