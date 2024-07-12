@@ -41,4 +41,4 @@ async function updateProfile(req, res) {
 }
 
 
-module.exports = {showProfile}
+module.exports = {showProfile, updateProfile}
