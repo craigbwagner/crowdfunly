@@ -25,6 +25,7 @@ async function updateProfile(req, res) {
     if (req.user._id !== req.params.userId) {
       return res.status(401).json({ error: 'Unauthorized' });
     }
+    const updatedProfile = await Profile.findByIdAndUpdate(req.params.userId, req.body, { new: true });
   } catch (error) {
     
   }
