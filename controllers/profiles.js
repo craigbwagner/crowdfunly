@@ -20,17 +20,17 @@ async function showProfile(req, res) {
   }
 };
 
-async function updateProfile(req, res) {
+async function updateUser(req, res) {
   try {
     if (req.user._id !== req.params.userId) {
       return res.status(401).json({ error: 'Unauthorized' });
     }
-    const updatedProfile = await Profile.findByIdAndUpdate(req.params.userId, req.body, { new: true });
-    if (!updatedProfile) {
+    const updateUser = await User.findByIdAndUpdate(req.params.userId, req.body, { new: true });
+    if (!updateUser) {
       res.status(404);
       throw new Error('Profile not found.');
     }
-    res.json({ updatedProfile });
+    res.json({ updateUser });
   } catch (error) {
     if (res.statusCode === 404) {
       res.status(404).json({ error: error.message });
@@ -41,4 +41,4 @@ async function updateProfile(req, res) {
 }
 
 
-module.exports = {showProfile, updateProfile}
+module.exports = {showProfile, updateUser}
