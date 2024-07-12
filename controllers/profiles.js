@@ -30,6 +30,7 @@ async function updateProfile(req, res) {
       res.status(404);
       throw new Error('Profile not found.');
     }
+    res.json({ updatedProfile });
   } catch (error) {
     
   }
