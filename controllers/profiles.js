@@ -20,4 +20,15 @@ async function showProfile(req, res) {
   }
 };
 
+async function updateProfile(req, res) {
+  try {
+    if (req.user._id !== req.params.userId) {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
+  } catch (error) {
+    
+  }
+}
+
+
 module.exports = {showProfile}
