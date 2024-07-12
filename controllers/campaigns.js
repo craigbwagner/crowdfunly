@@ -58,9 +58,9 @@ async function update(req, res) {
 
 async function deleteCampaign(req, res) {
   try {
-    const campaign = await Campaign.findById(req.params.CampaignId);
+    const campaign = await Campaign.findById(req.params.campaignId);
 
-    if (!campaign.createdBy.equals(req.user._id)) {
+    if (!campaign.createdBy._id.equals(req.user._id)) {
       return res.status(403).send({ error: "Unauthorized" });
     }
 
