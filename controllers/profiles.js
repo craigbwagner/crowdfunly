@@ -32,7 +32,11 @@ async function updateProfile(req, res) {
     }
     res.json({ updatedProfile });
   } catch (error) {
-    
+    if (res.statusCode === 404) {
+      res.status(404).json({ error: error.message });
+    } else {
+      res.status(500).json({ error: error.message });
+    }
   }
 }
 
