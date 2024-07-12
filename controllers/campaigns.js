@@ -25,10 +25,10 @@ async function index(req, res) {
 
 async function show(req, res) {
   try {
-    const campaigns = await Campaign.findById(req.params.campaignId).populate(
+    const campaign = await Campaign.findById(req.params.campaignId).populate(
       "createdBy"
     );
-    res.status(200).json(campaigns);
+    res.status(200).json(campaign);
   } catch (error) {
     res.status(500).json(error);
   }
