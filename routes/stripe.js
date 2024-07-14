@@ -10,6 +10,9 @@ router.post('/create-payment-intent', async (req, res) =>{
             currency: 'usd',
             payment_method: 'pm_card_visa',
           }); 
+          res.send({
+            clientSecret: paymentIntent.client_secret,
+          });
     } catch (
         
 
