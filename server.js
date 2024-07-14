@@ -9,7 +9,7 @@ const testJWTRouter = require("./routes/test-jwt");
 const usersRouter = require("./routes/users");
 const profilesRouter = require("./routes/profiles");
 const campaignsRouter = require("./routes/campaigns.js");
-const stripeRouter = require('./routes/stripe.js');
+const stripeRouter = require("./routes/stripe.js");
 
 mongoose.connect(process.env.MONGODB_URI);
 
@@ -24,11 +24,7 @@ app.use("/test-jwt", testJWTRouter);
 app.use("/users", usersRouter);
 app.use("/profiles", profilesRouter);
 app.use("/campaigns", campaignsRouter);
-app.use('/stripe', stripeRouter);
-
-
-
-
+app.use("/stripe", stripeRouter);
 
 app.listen(3000, () => {
   console.log("The express app is ready!");
