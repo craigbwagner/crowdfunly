@@ -7,11 +7,11 @@ const Campaign = require("../models/campaign");
 router.post("/:campaignId", async (req, res) => {
   const { amount, contributedBy } = req.body;
   const { campaignId } = req.params;
-  
+
   try {
-    const createdContribution = await Contribution.create(req.body);
-    createdContribution._doc.contributedBy = req.user;
-    res.status(201).json(createdContribution);
+     if (!amount || !contributedBy) {
+      return res.status(400).json({ message: 'Amount and Contributor ID are required' });
+    }
   } catch (error) {
     console.log(error);
     res.status(500).json(error);
