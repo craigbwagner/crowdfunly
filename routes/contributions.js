@@ -5,6 +5,9 @@ const mongoose = require('mongoose');
 const Campaign = require("../models/campaign");
 
 router.post("/:campaignId", async (req, res) => {
+  const { amount, contributedBy } = req.body;
+  const { campaignId } = req.params;
+  
   try {
     const createdContribution = await Contribution.create(req.body);
     createdContribution._doc.contributedBy = req.user;
