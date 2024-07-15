@@ -10,6 +10,7 @@ const usersRouter = require("./routes/users");
 const profilesRouter = require("./routes/profiles");
 const campaignsRouter = require("./routes/campaigns.js");
 const stripeRouter = require("./routes/stripe.js");
+const contributionsRouter = require("./routes/contributions.js");
 
 mongoose.connect(process.env.MONGODB_URI);
 
@@ -25,6 +26,7 @@ app.use("/users", usersRouter);
 app.use("/profiles", profilesRouter);
 app.use("/campaigns", campaignsRouter);
 app.use("/stripe", stripeRouter);
+app.use("/contributions", contributionsRouter);
 
 app.listen(3000, () => {
   console.log("The express app is ready!");
