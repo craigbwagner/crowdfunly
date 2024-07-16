@@ -1,9 +1,9 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const testJWT = require('../controllers/test-jwt')
+const testJWT = require("../controllers/test-jwt");
 
-router.get('/sign-token', testJWT.signToken);
+router.get("/sign-token", testJWT.signToken);
 
-router.post('/verify-token', testJWT.verifyToken);
+router.post("/verify-token", testJWT.verifyToken);
 
 module.exports = router;

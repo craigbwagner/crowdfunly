@@ -10,29 +10,25 @@ async function create(req, res) {
     console.log(error);
     res.status(500).json(error);
   }
-};
+}
 
 async function index(req, res) {
   try {
-    const campaigns = await Campaign.find({})
-      .populate("createdBy")
-      .sort({ createdAt: "desc" });
+    const campaigns = await Campaign.find({}).populate("createdBy").sort({ createdAt: "desc" });
     res.status(200).json(campaigns);
   } catch (error) {
     res.status(500).json(error);
   }
-};
+}
 
 async function show(req, res) {
   try {
-    const campaign = await Campaign.findById(req.params.campaignId).populate(
-      "createdBy"
-    );
+    const campaign = await Campaign.findById(req.params.campaignId).populate("createdBy");
     res.status(200).json(campaign);
   } catch (error) {
     res.status(500).json(error);
   }
-};
+}
 
 async function update(req, res) {
   try {
@@ -42,11 +38,7 @@ async function update(req, res) {
       return res.status(403).send({ error: "Unauthorized" });
     }
 
-    const updatedCampaign = await Campaign.findByIdAndUpdate(
-      req.params.campaignId,
-      req.body,
-      { new: true }
-    );
+    const updatedCampaign = await Campaign.findByIdAndUpdate(req.params.campaignId, req.body, { new: true });
 
     updatedCampaign._doc.createdBy = req.user;
 
@@ -54,7 +46,7 @@ async function update(req, res) {
   } catch (error) {
     res.status(500).json(error);
   }
-};
+}
 
 async function deleteCampaign(req, res) {
   try {
@@ -64,13 +56,11 @@ async function deleteCampaign(req, res) {
       return res.status(403).send({ error: "Unauthorized" });
     }
 
-    const deletedCampaign = await Campaign.findByIdAndDelete(
-      req.params.campaignId
-    );
+    const deletedCampaign = await Campaign.findByIdAndDelete(req.params.campaignId);
     res.status(200).json(deletedCampaign);
   } catch (error) {
     res.status(500).json(error);
   }
-};
+}
 
 module.exports = { create, index, show, update, deleteCampaign };
