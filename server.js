@@ -5,7 +5,6 @@ const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
 
-const testJWTRouter = require("./routes/test-jwt");
 const usersRouter = require("./routes/users");
 const profilesRouter = require("./routes/profiles");
 const campaignsRouter = require("./routes/campaigns.js");
@@ -21,7 +20,6 @@ mongoose.connection.on("connected", () => {
 app.use(express.json());
 app.use(cors());
 
-app.use("/test-jwt", testJWTRouter);
 app.use("/users", usersRouter);
 app.use("/profiles", profilesRouter);
 app.use("/campaigns", campaignsRouter);
