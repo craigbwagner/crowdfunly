@@ -4,6 +4,18 @@ const Contribution = require("../models/contribution");
 const Campaign = require("../models/campaign");
 const router = express.Router();
 
+router.get("/", async (req, res) => {
+  try {
+    const contributions = await Contribution.find({})
+      .populate("contributedBy")
+      .populate("campaignId")
+      .sort({ createdAt: "desc" });
+    res.status(200).json(contributions);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+})
+
 router.post("/:campaignId", async (req, res) => {
   const { amount, contributedBy } = req.body;
   const { campaignId } = req.params;
