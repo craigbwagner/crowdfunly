@@ -26,6 +26,6 @@ app.use("/campaigns", campaignsRouter);
 app.use("/stripe", stripeRouter);
 app.use("/contributions", contributionsRouter);
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
   console.log("The express app is ready!");
 });
