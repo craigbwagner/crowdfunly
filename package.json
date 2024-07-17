@@ -17,7 +17,6 @@
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.5.1",
-    "node": "^18.20.4",
     "stripe": "^16.2.0"
   }
 }
