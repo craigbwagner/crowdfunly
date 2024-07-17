@@ -4,4 +4,5 @@ const stripeController = require("../controllers/stripe");
 
 router.post("/create-payment-intent", stripeController.makePayment);
 
+
 module.exports = router;

@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
   } catch (error) {
     res.status(500).json(error);
   }
-})
+});
 
 router.post("/:campaignId", async (req, res) => {
   const { amount, contributedBy } = req.body;

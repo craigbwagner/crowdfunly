@@ -1,37 +1,40 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const userSchema = mongoose.Schema({
   username: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   password: {
     type: String,
-    required: true
+    required: true,
   },
   email: {
     type: String,
-    required: true
+    required: true,
   },
   profilePicture: {
-    type: String
+    type: String,
   },
-  campaigns: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Campaign'
-}],
-contributions: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Contribution'
-}]
+  campaigns: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Campaign",
+    },
+  ],
+  contributions: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Contribution",
+    },
+  ],
 });
 
-
-userSchema.set('toJSON', {
+userSchema.set("toJSON", {
   transform: (document, returnedObject) => {
     delete returnedObject.password;
-  }
+  },
 });
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model("User", userSchema);
