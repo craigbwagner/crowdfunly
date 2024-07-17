@@ -18,7 +18,7 @@ mongoose.connection.on("connected", () => {
 });
 
 app.use(express.json());
-app.use(cors({ origin: "https://crowdfunly.netlify.app/"}));
+app.use(cors());
 
 app.use("/users", usersRouter);
 app.use("/profiles", profilesRouter);
